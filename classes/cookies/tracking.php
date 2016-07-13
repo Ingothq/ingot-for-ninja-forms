@@ -11,9 +11,6 @@
 
 namespace ingot\addon\nf\cookies;
 
-
-
-
 use ingot\testing\crud\group;
 
 class tracking extends \ingot\testing\cookies\tracking {

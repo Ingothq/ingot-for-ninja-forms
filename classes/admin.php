@@ -10,7 +10,7 @@
  * @copyright 2016 Josh Pollock
  */
 
-namespace ingot\addon\forms\nf;
+namespace ingot\addon\nf;
 
 class admin {
 
@@ -79,7 +79,7 @@ class admin {
 		foreach ( $forms as $form ){
 			$_form = Ninja_Forms()->form( $form );
 			$vars[ 'forms' ][] = [
-				'id' => $form,
+				'form_id' => $form,
 				'name' => $_form->get_setting( 'form_title')
 			];
 

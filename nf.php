@@ -1,7 +1,7 @@
 <?php
 
 use \ingot\addon\nf\cookies\tracking;
-use \ingot\addon\forms\nf\admin;
+use \ingot\addon\nf\admin;
 use \ingot\testing\utility\group;
 use \ingot\addon\nf\cookies\init;
 
@@ -12,10 +12,10 @@ use \ingot\addon\nf\cookies\init;
  * @since 0.0.2
  */
 add_action( 'ninja_forms_before_pre_process', function( ){
-	global  $ninja_forms_processing;
 	$session_detail = \Ninja_Forms::instance()->session->get( 'ingot-nf' );
 	if( is_object( $details = json_decode( $session_detail ) ) ){
 		ingot_register_conversion( $details->variant, $details->group );
+		\Ninja_Forms::instance()->session->set( 'ingot-nf', false );
 	}
 
 });

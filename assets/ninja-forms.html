@@ -11,12 +11,12 @@
             <div id="test-{{variant.ID}}">
                 <ng-form name="innerForm">
                     <div class="form-group row">
-                        <label for="text-{{variant.ID}}" class="col-sm-3">
+                        <label for="form-{{variant.ID}}" class="col-sm-3" id="form-{{variant.ID}}-label">
                             {{translate.forms.nf.form}}
                         </label>
 
-                        <select name="text" type="text" id="text-{{variant.ID}}" ng-model="variant.content" class="col-sm-7 ingot-nf-form-chooser" ng-required="true" ng-controller="nfforms" aria-labelledby="text-{{variant.ID}}">
-                            <option ng-repeat="form in forms track by form.id" value="{{form.id}}">
+                        <select type="text" name="form-{{variant.ID}}" ng-model="variant.content" class="col-sm-7 ingot-nf-form-chooser" ng-required="true" ng-controller="nfforms" aria-labelledby="form-{{variant.ID}}-label">
+                            <option ng-repeat="form in forms track by form.form_id" value="{{form.form_id}}" ng-selected="{{form.form_id == variant.content}}" >
                                 {{form.name}}
                             </option>
 
