@@ -101,11 +101,10 @@ add_filter( 'ingot_click_test_custom_render_callback', function( $cb, $type ){
  * @return string
  */
 function ingot_nf_cb( $group ){
-	include_once __DIR__ . '/classes/render.php';
-
 	$variant_id = init::get_variant( $group[ 'ID' ] );
 	$ui = new ingot\addon\nf\render( $group, $variant_id );
 	return $ui->get_html();
+
 }
 
 /**
@@ -117,14 +116,11 @@ add_filter( 'ingot_crud_update', function( $data, $id, $what ){
 	if( 'group' == $what ){
 		$sub_type = group::sub_type( $data );
 		if( 'form-nf' == $sub_type ){
-
-			$tracking = tracking::get_instance()->is_tracking( $id );
-			if( ! $tracking ) {
-				tracking::get_instance()->add_to_tracking( $id );
-				tracking::get_instance()->save();
-			}
-
+			tracking::get_instance()->add_to_tracking( $id );
+			tracking::get_instance()->save();
+			
 		}
+		
 	}
 
 	return $data;

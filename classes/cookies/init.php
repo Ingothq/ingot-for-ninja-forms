@@ -72,10 +72,16 @@ class init {
 	 * @param $i
 	 */
 	public static function check_cookie( $group_id, $i ){
-		if( empty( self::$tests  ) || ! in_array( $group_id, self::$tests  ) || empty( cookie::get_cookie( $group_id ) )){
-			$variant_id = self::choose( $group_id );
-			cookie::set_cookie( $group_id, $variant_id );
-			self::$tests[ $group_id ] = $variant_id;
+		if( empty( self::$tests  ) || ! in_array( $group_id, self::$tests  ) ){
+			$variant_id = cookie::get_cookie( $group_id  );
+			if( empty( $variant_id ) ){
+				$variant_id = self::choose( $group_id );
+				cookie::set_cookie( $group_id, $variant_id );
+				
+			}else{
+				self::$tests[ $group_id ] = $variant_id;
+			}
+			
 
 		}else{
 			$variant_id = cookie::get_cookie( $group_id );
