@@ -46,7 +46,7 @@ class admin {
 	 */
 	public function register_scripts(){
 		wp_register_script( 'ingot-form-nf',  $this->url, [ 'ingot-admin-app' ]  );
-		wp_localize_script( 'ingot-form-nf', 'INGOT_FORM_nf', $this->vars() );
+		wp_localize_script( 'ingot-form-nf', 'INGOT_FORM_NF', $this->vars() );
 	}
 
 	/**
@@ -74,12 +74,13 @@ class admin {
 	 */
 	protected function vars(){
 		$vars = [ 'forms' => [] ];
-		$forms = \Caldera_Forms_Forms::get_forms( true );
+		$forms = $forms = \Ninja_Forms::instance()->forms( )->get_all();
 
 		foreach ( $forms as $form ){
+			$_form = Ninja_Forms()->form( $form );
 			$vars[ 'forms' ][] = [
-				'id' => $form[ 'ID' ],
-				'name' => $form[ 'name' ]
+				'id' => $form,
+				'name' => $_form->get_setting( 'form_title')
 			];
 
 		}

@@ -8,7 +8,7 @@
  * @link
  * @copyright 2016 Josh Pollock
  */
-namespace ingot\addon\forms\nf\cookies;
+namespace ingot\addon\nf\cookies;
 
 
 class cookie extends \ingot\testing\cookies\cookie {
@@ -21,4 +21,6 @@ class cookie extends \ingot\testing\cookies\cookie {
 	 */
 	protected static $type = 'form_nf';
 
+
+	
 }
